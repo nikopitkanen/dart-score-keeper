@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/main.css">
-    <script src="src/main.js" type="module"></script>
-    <title>Dart score keeper</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darts Score Keeper</title>
+  <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
-    
+  <header>
+    <h1>Darts Score Keeper</h1>
+  </header>
+
+  <main>
+    <section id="setup-section">
+      <h2>Game Setup</h2>
+      <form id="setup-form">
+        <label>
+          Player 1:
+          <input id="player1" type="text" required />
+        </label>
+        <label>
+          Player 2:
+          <input id="player2" type="text" required />
+        </label>
+        <label>
+          Game Type:
+          <select id="gameType">
+            <option value="301">301</option>
+            <option value="501">501</option>
+          </select>
+        </label>
+        <label>
+          Legs to Win:
+          <input id="setSize" type="number" min="1" value="3" required />
+        </label>
+        <button type="submit">Start Game</button>
+      </form>
+    </section>
+
+    <section id="game-section" hidden>
+      <div id="scoreboard"></div>
+
+      <div id="turn-input">
+        <h3>Enter Turn Score</h3>
+        <label>
+          Current Player:
+          <span id="current-player-name"></span>
+        </label>
+        <input id="turn-score" type="number" min="0" max="180" />
+        <button id="submit-turn">Submit</button>
+        <button id="undo-turn">Undo</button>
+      </div>
+
+      <div id="turn-history"></div>
+
+      <button id="new-leg">Start New Leg</button>
+      <button id="reset-game">Reset Game</button>
+    </section>
+  </main>
+
+  <script type="module" src="dist/app.js"></script>
 </body>
 </html>
+
