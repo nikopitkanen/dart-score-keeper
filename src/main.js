@@ -4,3 +4,4 @@
 // view handles all the updates of the ui.
 
 // remember to export game.js and ui.js here!!!
+// this is just a test comment
