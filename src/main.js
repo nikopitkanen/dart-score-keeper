@@ -2,5 +2,4 @@
 // controllers task is to connect model and view.
 // model handles all the logic.
 // view handles all the updates of the ui.
-// remember to export game.js and ui.js here!!!
-// this is just a test comment
+
