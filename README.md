@@ -4,12 +4,17 @@ version: 0.01
 Author: Niko Pitkänen
 
 ## Install
+```
+git clone git@github.com:nikopitkanen/dart-score-keeper.git
 
-- clone project from the following url: https://github.com/nikopitkanen/dart-score-keeper.git
-- use "cd dart-score-keeper"
-- use "git checkout development" 
-- use "git checkout -b (branch-name)" to create new feature branch. 
+cd dart-score-keeper
 
+npm install
+
+git checkout development
+
+git checkout -b (branch-name)
+```
 ## Folder structure
 
 following folder structure has been established:
