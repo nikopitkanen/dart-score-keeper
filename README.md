@@ -1,6 +1,6 @@
 # Dart score keeper
 
-version: 0.01
+version: 0.01  
 Author: Niko Pitkänen
 
 ## Install
@@ -18,7 +18,7 @@ git checkout -b (branch-name)
 ## Folder structure
 
 following folder structure has been established:
-
+```
 darts-score-keeper/
 ├── index.html
 ├── README.md
@@ -35,6 +35,7 @@ darts-score-keeper/
 │    
 └── assets/
     └── images/
+```
 
 ## Project management
 
