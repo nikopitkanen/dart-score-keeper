@@ -1,0 +1,22 @@
+{
+  "name": "dart-score-keeper",
+  "version": "0.0.0",
+  "description": "Frontend dart score keeper",
+  "main": "index.js",
+  "scripts": {
+    "lint-format": "biome check --write",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikopitkanen/dart-score-keeper"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@biomejs/biome": "2.3.2",
+    "jest": "^30.2.0"
+  }
+}

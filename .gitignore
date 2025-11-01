@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Lock files for other package managers
+yarn.lock
+pnpm-lock.yaml
+
+# IDE & Editor Directories
+.idea/
+.zed/
+.vscode/
+!.vscode/extensions.json
+
+# Operating System files
+.DS_Store
+.Thumbs.db
+
+
