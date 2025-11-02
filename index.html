@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darts Score Keeper</title>
     <link rel="stylesheet" href="./styles/main.css">
-    <script src="./src/main.js" type="module"></script>
+    <!--<script src="./src/main.js" type="module"></script> -->
   </head>
   <body>
     <header>
@@ -18,24 +18,24 @@
         <form id="setup-form">
           <label>
             Player 1:
-            <input id="player1" type="text" required>
+            <input id="player-1" type="text" required>
           </label>
           <label>
             Player 2:
-            <input id="player2" type="text" required>
+            <input id="player-2" type="text" required>
           </label>
           <label>
             Game Type:
-            <select id="gameType">
+            <select id="game-type">
               <option value="301">301</option>
               <option value="501">501</option>
             </select>
           </label>
           <label>
             Legs to Win:
-            <input id="setSize" type="number" min="1" value="3" required>
+            <input id="set-size" type="number" min="1" value="3" required>
           </label>
-          <button type="submit">Start Game</button>
+          <button id="start-game" type="button">Start Game</button>
         </form>
       </section>
 
@@ -59,5 +59,50 @@
         <button id="reset-game">Reset Game</button>
       </section>
     </main>
+    <script>
+    //setup form
+    const p1Input = document.getElementById("player-1");
+    const p2Input = document.getElementById("player-2");
+    const gameTypeSelect = document.getElementById("game-type");
+    //const legsSelect = document.getElementById("set-size");
+    const startGameBtn = document.getElementById("start-game");
+    startGameBtn.addEventListener("click", handleNewGame);
+
+    const state = {
+      players: [
+        {
+          name: "Player1",
+          score: "301",
+        },
+        {
+          name: "Player2",
+          score: "301",
+        },
+      ],
+      gameType: 301,
+    };
+
+    function newGame(p1, p2, gameType) {
+      state.gameType = parseInt(gameType, 10);
+      state.players[0] = { name: p1, score: state.gameType };
+      state.players[1] = { name: p2, score: state.gameType };
+    }
+
+    function handleNewGame() {
+      const gameType = gameTypeSelect.value;
+      const p1 = p1Input.value;
+      const p2 = p2Input.value;
+
+      newGame(p1, p2, gameType);
+      console.log(state);
+    }
+
+    //scoreboard
+    //const submitScoreBtn = document.getElementById("submit-turn");
+    //const undoTurnBtn = document.getElementById("undo-turn");
+    //const resetGameBtn = document.getElementById("reset-game");
+    //const startNewLegBtn = document.getElementById("new-leg");
+    //const currentPlayer = document.getElementByID("current-player-name");
+    </script>
   </body>
 </html>
