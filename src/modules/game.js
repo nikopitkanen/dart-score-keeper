@@ -15,3 +15,5 @@ const _state = {
   currentPlayer: 0,
   gameType: 301,
 };
+
+function startGame(p1, p2, gameType) {}
