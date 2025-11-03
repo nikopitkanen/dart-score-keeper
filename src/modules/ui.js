@@ -1,4 +1,4 @@
-import state from "./game.js";
+import { state } from "./game.js";
 
 export function scoreBoard() {
   const currentPlayer = document.getElementById("current-player-name");
