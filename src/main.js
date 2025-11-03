@@ -1,8 +1,5 @@
-// To achieve modularity project uses MVC model: main.js = controller, game.js = model, ui.js = view.
-// controllers task is to connect model and view.
-// model handles all the logic.
-// view handles all the updates of the ui.
 import * as game from "./modules/game.js";
+import * as ui from "./modules/ui.js";
 
 //setup form
 const p1Input = document.getElementById("player-1");
@@ -18,5 +15,6 @@ function handleNewGame() {
   const p2 = p2Input.value;
 
   game.newGame(p1, p2, gameType);
+  ui.scoreBoard();
   console.log(game.state);
 }

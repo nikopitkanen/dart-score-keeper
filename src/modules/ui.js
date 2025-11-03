@@ -1,5 +1,10 @@
-// Dom manipulating scripts here like scoreboard.
+import { state } from "./game.js";
 
-const _p1 = {
-  // these are placeholders
-};
+export function scoreBoard() {
+  const currentPlayer = document.getElementById("current-player-name");
+  if (state.currentPlayerIndex === 0) {
+    currentPlayer.textContent = state.players[0].name;
+  } else {
+    currentPlayer.textContent = state.players[1].name;
+  }
+}
