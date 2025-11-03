@@ -1,0 +1,10 @@
+pre-commit:
+  commands:
+    biome:
+      run: npm run lint-format {staged_files}
+      stage_fixed: true
+
+pre-push:
+  commands:
+    biome:
+      run: npm run lint-check
