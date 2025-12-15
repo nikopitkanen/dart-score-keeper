@@ -1,6 +1,7 @@
 import { state } from "./game.js";
 
 export function scoreBoard() {
+
 	// Update current player name
 	const currentPlayer = document.getElementById("current-player-name");
 	currentPlayer.textContent = state.players[state.currentPlayerIndex].name;
