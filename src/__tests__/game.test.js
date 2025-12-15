@@ -40,6 +40,7 @@ describe("game module", () => {
   });
 
   test("should declare game winner when legsToWin is reached", () => {
+    // this test is basically uses
     state.players[0].legsWon = 1;
     state.players[0].score = 50;
     turn(50);
