@@ -1,0 +1,100 @@
+/* General page styling */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at top, #222, #444);
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Header */
+header {
+  background: #c77414; /* dartboard red */
+  padding: 1rem;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+/* Setup section */
+#setup-section {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 400px;
+  background: #333;
+  border-radius: 8px;
+}
+
+#setup-form label {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+#setup-form input,
+#setup-form select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: none;
+  border-radius: 4px;
+}
+
+button {
+  background: #228b22; 
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  margin: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  
+}
+
+button:hover {
+  background: #2e8b57;
+}
+
+/* Game section */
+#game-section {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 600px;
+  background: #222;
+  border-radius: 8px;
+}
+
+#scoreboard {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #111;
+  border: 2px solid #555;
+  border-radius: 6px;
+}
+
+#scoreboard p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+/* Current player highlight */
+#current-player-name {
+  font-weight: bold;
+  color: #c77414; 
+}
+
+/* Turn input */
+#turn-input {
+  margin: 1rem 0;
+}
+
+#turn-score {
+  width: 80px;
+  text-align: center;
+  font-size: 1.2rem;
+}

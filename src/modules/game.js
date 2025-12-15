@@ -26,3 +26,40 @@ export function newGame(p1, p2, gameType) {
   state.currentPlayerIndex = 0;
   state.isGameOver = false;
 }
+
+export function throwDart(points) {
+  const currentPlayer = state.players[state.currentPlayerIndex];
+  currentPlayer.score -= points;
+
+  if (currentPlayer.score < 0) {
+    // Bust rule: score resets to previous value
+    currentPlayer.score += points;
+    nextTurn();
+    return;
+  }
+
+  if (currentPlayer.score === 0) {
+    // Player wins the leg
+    currentPlayer.legsWon += 1;
+    checkGameOver();
+  } else {
+    nextTurn();
+  }
+}
+
+export function nextTurn() {
+  state.currentPlayerIndex = (state.currentPlayerIndex + 1) % state.players.length;
+}
+
+export function checkGameOver() {
+  const winningLegs = 3; // best of 
+  const winner = state.players.find(p => p.legsWon >= winningLegs);
+
+  if (winner) {
+    state.isGameOver = true;
+    alert(`${winner.name} wins the match`);
+  } else {
+    // Reset scores for next leg
+    state.players.forEach(p => p.score = state.gameType);
+  }
+}
