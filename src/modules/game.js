@@ -15,8 +15,7 @@ export function newGame(p1, p2, gameType, legs) {
 
   state.gameType = parseInt(gameType, 10);
   state.legsToWin = parseInt(legs, 10);
-  state.history = []; // Reset history on new game
-
+  state.history = [];
   state.players = [
     { name: p1, score: state.gameType, legsWon: 0 },
     { name: p2, score: state.gameType, legsWon: 0 },
@@ -29,9 +28,11 @@ export function newGame(p1, p2, gameType, legs) {
 export function throwDart(points) {
   if (state.isGameOver) return;
 
+  saveState();
+
   const currentPlayer = state.players[state.currentPlayerIndex];
   const remainingScore = currentPlayer.score;
- 
+
   let newScore = remainingScore - points;
 
   if (newScore < 0 || newScore === 1) {
@@ -47,14 +48,20 @@ export function throwDart(points) {
   } else {
     nextTurn();
   }
+  console.table(state.players)
 }
 
-export function undo() {
+export function undoLastTurn() {
   if (state.history.length > 0) {
-    state.history.pop();
+    const previousState = state.history.pop();
+    state.players = previousState.players;
+    state.currentPlayerIndex = previousState.currentPlayerIndex;
+    state.isGameOver = previousState.isGameOver
+    console.table(state.players)
   } else {
     console.log("nothing to undo");
   }
+}
 
 export function startNewLeg() {
   state.players.forEach((p) => (p.score = state.gameType));
@@ -75,5 +82,14 @@ function handleLegWin(player) {
     alert(`${player.name} wins the leg!`);
     startNewLeg();
   }
+}
+
+function saveState() {
+  const stateCopy = JSON.parse(JSON.stringify(state.players));
+  state.history.push({
+    players: stateCopy,
+    currentPlayerIndex: state.currentPlayerIndex,
+    isGameOver: state.isGameOver
+  })
 }
 }
