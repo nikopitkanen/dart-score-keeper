@@ -20,6 +20,7 @@ export function newGame(p1, p2, gameType, legs) {
     { name: p1, score: state.gameType, legsWon: 0 },
     { name: p2, score: state.gameType, legsWon: 0 },
   ];
+
   state.currentPlayerIndex = 0;
   state.isGameOver = false;
 }
@@ -90,4 +91,5 @@ function saveState() {
     currentPlayerIndex: state.currentPlayerIndex,
     isGameOver: state.isGameOver
   })
+}
 }
