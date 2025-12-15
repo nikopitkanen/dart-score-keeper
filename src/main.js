@@ -8,8 +8,6 @@ const gameTypeSelect = document.getElementById("game-type");
 const legsSelect = document.getElementById("set-size");
 const startGameBtn = document.getElementById("start-game");
 const submitTurnBtn = document.getElementById("submit-turn");
-startGameBtn.addEventListener("click", handleNewGame);
-submitTurnBtn.addEventListener("click", handleTurn);
 
 function handleNewGame() {
   const gameType = gameTypeSelect.value;
@@ -22,6 +20,32 @@ function handleNewGame() {
   console.table(game.state);
 }
 
+startGameBtn.addEventListener("click", handleNewGame);
+submitTurnBtn.addEventListener("click", handleTurn);
+
 function handleTurn() {
   game.turn;
 }
+
+submitTurnBtn.addEventListener("click", () => {
+	const points = parseInt(document.getElementById("turn-score").value, 10);
+	game.throwDart(points); // update game state
+	ui.scoreBoard(); // refresh scoreboard
+	ui.currentPlayer(); // update current player display
+});
+
+undoTurnBtn.addEventListener("click", () => {
+	game.undoLastTurn();
+	ui.scoreBoard();
+	ui.currentPlayer();
+});
+
+newLegBtn.addEventListener("click", () => {
+	game.startNewLeg();
+	ui.scoreBoard();
+	ui.currentPlayer();
+});
+
+resetGameBtn.addEventListener("click", () => {
+	location.reload(); // simplest reset: reloads the page
+});
