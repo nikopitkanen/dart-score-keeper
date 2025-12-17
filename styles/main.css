@@ -1,176 +1,204 @@
+:root {
+  /* COLOR PALETTE */
+  --primary: #c77414;        /* orange board */
+  --secondary: #333;         /* Panel bg */
+  --bg-body: #222;           /* Main bg */
+  --bg-dark: #111;           /* Scoreboard black */
+  --text-main: #f0f0f0;
+  --success: #228b22;        /* Green */
+  --success-hover: #2e8b57;
+  --danger: #b22222;         /* Red */
+  --danger-hover: #cd5c5c;
+  --terminal-text: #0f0;     /* Keypad Green */
+  
+  /* spacing and borders */
+  --radius: 8px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
 
 /* General page styling */
 body {
-	font-family: "Segoe UI", Arial, sans-serif;
-	background: radial-gradient(circle at top, #222, #444);
-	color: #f0f0f0;
-	margin: 0;
-	padding: 0;
-	text-align: center;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at top, var(--bg-body), #444);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 /* Header */
 header {
-	background: #c77414; /* dartboard red */
-	padding: 1rem;
-	color: white;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  background: var(--primary);
+  padding: 1rem;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
 header h1 {
-	margin: 0;
-	font-size: 2rem;
-	letter-spacing: 2px;
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
 }
 
-/* Setup section */
-#setup-section {
-	margin: 2rem auto;
-	padding: 1rem;
-	max-width: 400px;
-	background: #333;
-	border-radius: 8px;
+/* SETUP AND GAME SECTIONS */
+#setup-section, #game-section {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 400px; /* Setup width */
+  background: var(--secondary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
-#setup-form label {
-	display: block;
-	margin: 0.5rem 0;
+#game-section {
+  max-width: 600px; /* Game width is wider */
+  background: var(--bg-body);
 }
 
-#setup-form input,
-#setup-form select {
-	width: 100%;
-	padding: 0.5rem;
-	margin-top: 0.25rem;
-	border: none;
-	border-radius: 4px;
+/* inputs */
+label {
+  display: block;
+  margin: 0.5rem 0;
 }
 
+input, select {
+  width: 90%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* buttons */
 button {
-	background: #228b22;
-	color: white;
-	border: none;
-	padding: 0.6rem 1rem;
-	margin: 0.5rem;
-	border-radius: 6px;
-	cursor: pointer;
+  background: var(--success);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  margin: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
 }
 
 button:hover {
-	background: #2e8b57;
+  background: var(--success-hover);
 }
 
-/* Game section */
-#game-section {
-	margin: 2rem auto;
-	padding: 1rem;
-	max-width: 600px;
-	background: #222;
-	border-radius: 8px;
+/* Special Button Styles */
+.danger-btn {
+  background-color: var(--danger) !important;
+}
+.danger-btn:hover {
+  background-color: var(--danger-hover) !important;
 }
 
+.secondary-btn {
+  background-color: #555 !important;
+}
+
+/* Scoreboard */
 #scoreboard {
-	margin: 1rem 0;
-	padding: 1rem;
-	background: #111;
-	border: 2px solid #555;
-	border-radius: 6px;
-}
-
-#scoreboard p {
-	font-size: 1.2rem;
-	margin: 0.5rem 0;
-}
-
-/* Current player highlight */
-#current-player-name {
-	font-weight: bold;
-	color: #c77414;
-}
-
-/* Turn input */
-#turn-input {
-	margin: 1rem 0;
-}
-
-#turn-score {
-	width: 80px;
-	text-align: center;
-	font-size: 1.2rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--bg-dark);
+  border: 2px solid #555;
+  border-radius: var(--radius);
+  color: var(--primary);
 }
 
 .player-card {
-    padding: 10px;
-    border-bottom: 1px solid #444;
+  padding: 10px;
+  border-bottom: 1px solid #333;
 }
-
 .player-card.active {
-    background-color: #333;
-    border-left: 5px solid #c77414;
+  background-color: #2a2a2a;
+  border-left: 4px solid var(--primary);
 }
 
-.p-score {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 5px 0;
-}
-
-/* --- Keypad UI Styling --- */
-
-/* The grid container */
+/* Keypad UI */
 #keypad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-    gap: 12px;
-    max-width: 300px;
-    margin: 15px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 300px;
+  margin: 15px auto;
 }
 
-/* The Input Screen */
 #turn-score {
-    width: 200px;
-    height: 50px;
-    font-size: 2rem;
-    text-align: center;
-    background: #222;
-    color: #0f0; /* Terminal Green */
-    border: 2px solid #555;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    font-family: 'Courier New', monospace;
-    pointer-events: none; /* Prevents keyboard on mobile */
+  width: 200px;
+  height: 50px;
+  font-size: 2rem;
+  text-align: center;
+  background: var(--bg-dark);
+  color: var(--terminal-text);
+  border: 2px solid #555;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  pointer-events: none;
 }
 
-/* Number Buttons */
 .key {
-    background: #444;
-    color: white;
-    font-size: 1.5rem;
-    padding: 15px 0;
-    border-radius: 8px;
-    border: none;
-    box-shadow: 0 4px 0 #222; /* 3D effect */
-    cursor: pointer;
-    transition: transform 0.1s, box-shadow 0.1s;
+  background: #444;
+  color: white;
+  font-size: 1.5rem;
+  padding: 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 #222;
 }
-
 .key:active {
-    transform: translateY(4px); /* Push down effect */
-    box-shadow: 0 0 0 #222;
+  transform: translateY(4px);
+  box-shadow: none;
 }
 
-/* Action Buttons */
-#enter-btn {
-    background-color: #228b22; /* Green */
+/* --- MODAL DIALOG STYLES --- */
+dialog {
+  border: none;
+  border-radius: var(--radius);
+  background: var(--secondary);
+  color: var(--text-main);
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  max-width: 400px;
+  text-align: center;
 }
 
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7); /* Dims the background */
+  backdrop-filter: blur(2px);
+}
+
+dialog h3 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+}
+
+
+/* --- Fix Keypad Colors --- */
+
+/* Force the Clear button to be Red */
 #clear-btn {
-    background-color: #b22222; /* Red */
+    background-color: var(--danger) !important;
 }
 
-/* Secondary Buttons (Undo/Reset) */
-.secondary-btn {
-    background: #555;
-    margin-top: 15px;
-    font-size: 0.9rem;
+/* Force the Enter button to be Green */
+#enter-btn {
+    background-color: var(--success) !important;
+}
+
+/* Ensure hover effects work too */
+#clear-btn:hover {
+    background-color: var(--danger-hover) !important;
+}
+
+#enter-btn:hover {
+    background-color: var(--success-hover) !important;
 }

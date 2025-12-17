@@ -1,19 +1,19 @@
 import { state } from "./game.js";
 
 export function scoreBoard() {
-    // update player name
+    // update current player name
     const currentPlayerLabel = document.getElementById("current-player-name");
     
-    // Check if game is over 
+    // Check if games over to stop UI updates
     if (state.isGameOver) {
         currentPlayerLabel.textContent = "GAME OVER";
-        currentPlayerLabel.style.color = "red";
+        currentPlayerLabel.style.color = "var(--danger)"; // Uses CSS variable
     } else {
         currentPlayerLabel.textContent = state.players[state.currentPlayerIndex].name;
-        currentPlayerLabel.style.color = "#c77414"; // Reset color
+        currentPlayerLabel.style.color = "var(--primary)";
     }
 
-    // 2. update score list
+    // update scoreboard
     const scoreboard = document.getElementById("scoreboard");
     scoreboard.innerHTML = state.players
         .map(
@@ -26,17 +26,15 @@ export function scoreBoard() {
         )
         .join("");
         
-    // toggle inputs on game state
+    // toggle inputs based on game over
     const inputField = document.getElementById("turn-score");
-    const submitBtn = document.getElementById("submit-turn");
+    const enterBtn = document.getElementById("enter-btn");
     
+    // game is over, disable the key input
     if (state.isGameOver) {
-        inputField.disabled = true;
-        submitBtn.disabled = true;
+        // visually dimming it 
+        inputField.style.opacity = "0.5";
     } else {
-        inputField.disabled = false;
-        submitBtn.disabled = false;
-        // auto focus input
-        inputField.focus(); 
+        inputField.style.opacity = "1";
     }
 }
