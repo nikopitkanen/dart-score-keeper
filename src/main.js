@@ -1,67 +1,104 @@
 import * as game from "./modules/game.js";
 import * as ui from "./modules/ui.js";
 
-//setup form
+// --- DOM Elements ---
 const p1Input = document.getElementById("player-1");
 const p2Input = document.getElementById("player-2");
 const gameTypeSelect = document.getElementById("game-type");
 const legsSelect = document.getElementById("set-size");
 const startGameBtn = document.getElementById("start-game");
-const submitTurnBtn = document.getElementById("submit-turn");
 const undoTurnBtn = document.getElementById("undo-turn");
 const newLegBtn = document.getElementById("new-leg");
-const resetGameBtn = document.getElementById("reset-game")
+const resetGameBtn = document.getElementById("reset-game");
+
+// Keypad Specific Elements
+const keypad = document.getElementById("keypad");
+const turnInput = document.getElementById("turn-score");
+const clearBtn = document.getElementById("clear-btn");
+const enterBtn = document.getElementById("enter-btn");
+
+
+// --- Event Handlers ---
 
 function handleNewGame() {
-  const gameType = gameTypeSelect.value;
-  const legs = legsSelect.value;
-  const p1 = p1Input.value;
-  const p2 = p2Input.value;
+    const p1 = p1Input.value.trim();
+    const p2 = p2Input.value.trim();
 
-  game.newGame(p1, p2, gameType, legs);
-  ui.scoreBoard();
+    if (!p1 || !p2) {
+        alert("Please enter names for both players.");
+        return;
+    }
+
+    const gameType = gameTypeSelect.value;
+    const legs = legsSelect.value;
+
+    game.newGame(p1, p2, gameType, legs);
+    ui.scoreBoard();
 }
+
+
+// --- Event Listeners ---
 
 startGameBtn.addEventListener("click", handleNewGame);
-submitTurnBtn.addEventListener("click", handleTurn);
-
-function handleTurn() {
-  game.turn;
-}
-
-submitTurnBtn.addEventListener("click", () => {
-	const points = parseInt(document.getElementById("turn-score").value, 10);
-
-	if (isNaN(points)) {
-	  alert("insert valid number")
-	}
-
-	if (points > 180 || points <= 0) {
-	  alert("3 dart score can be only between 0 to 180")
-    return;
-	}
-	game.throwDart(points); // update game state
-	ui.scoreBoard(); // refresh scoreboard
-	ui.currentPlayer; // update current player display
-});
 
 undoTurnBtn.addEventListener("click", () => {
-	game.undoLastTurn();
-	ui.scoreBoard();
-	ui.currentPlayer;
-});
-
-newLegBtn.addEventListener("click", () => {
-	game.startNewLeg();
-	ui.scoreBoard();
-	ui.currentPlayer;
+    game.undoLastTurn();
+    ui.scoreBoard();
 });
 
 resetGameBtn.addEventListener("click", () => {
-	location.reload(); // simplest reset: reloads the page
+    location.reload();
 });
 
-// TODO: Remove new leg or refactor as in current state it is pointless.
-// FIXME: Winning game doesn't display anything, it just stops.
-// FIXME: Player name can be empty.This should not happen.
-// FIXME: 180 for round max score
+newLegBtn.addEventListener("click", () => {
+    if (confirm("Are you sure you want to force a new leg?")) {
+        game.startNewLeg();
+        ui.scoreBoard();
+    }
+});
+
+
+// --- KEYPAD LOGIC ---
+
+// 1. Handle Number Clicks (Using Event Delegation)
+keypad.addEventListener("click", (e) => {
+    // Check if the clicked element has the class 'key' but NOT 'action-btn'
+    if (e.target.matches(".key") && !e.target.classList.contains("action-btn")) {
+        const value = e.target.dataset.val;
+
+        // Prevent typing more than 3 digits
+        if (turnInput.value.length < 3) {
+            turnInput.value += value;
+        }
+    }
+});
+
+// 2. Handle Clear Button
+clearBtn.addEventListener("click", () => {
+    turnInput.value = "";
+});
+
+// 3. Handle Enter Button
+enterBtn.addEventListener("click", () => {
+    // Convert string input to number
+    const points = parseInt(turnInput.value, 10);
+
+    // Validation
+    if (isNaN(points)) {
+        alert("Enter a score first.");
+        return;
+    }
+
+    if (points > 180 || points < 0) {
+        alert("Score must be between 0 and 180.");
+        turnInput.value = ""; 
+        return;
+    }
+
+    // Execute Move
+    game.throwDart(points);
+    ui.scoreBoard();
+
+    // Reset Input
+    turnInput.value = "";
+});

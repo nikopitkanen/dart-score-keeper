@@ -77,7 +77,8 @@ function handleLegWin(player) {
 
   if (player.legsWon >= state.legsToWin) {
     state.isGameOver = true;
-    alert(`${player.name} wins the match!`);
+    // UI handles the game over 
+    setTimeout(() => alert(`${player.name} wins the match!`), 100); 
   } else {
     alert(`${player.name} wins the leg!`);
     startNewLeg();
@@ -91,5 +92,4 @@ function saveState() {
     currentPlayerIndex: state.currentPlayerIndex,
     isGameOver: state.isGameOver
   })
-}
 }

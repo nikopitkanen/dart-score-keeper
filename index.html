@@ -42,16 +42,32 @@
       <section id="game-section" hidden>
         <div id="scoreboard"></div>
 
-        <div id="turn-input">
-          <h3>Enter Turn Score</h3>
-          <label>
-            Current Player:
-            <span id="current-player-name"></span>
-          </label>
-          <input id="turn-score" type="number" min="0" max="180">
-          <button id="submit-turn">Submit</button>
-          <button id="undo-turn">Undo</button>
-        </div>
+<div id="turn-input">
+  <h3>Enter Turn Score</h3>
+  
+  <label>
+    Current Player: <span id="current-player-name"></span>
+  </label>
+
+  <input id="turn-score" type="text" placeholder="0" readonly>
+  
+  <div id="keypad">
+    <button class="key" data-val="1">1</button>
+    <button class="key" data-val="2">2</button>
+    <button class="key" data-val="3">3</button>
+    <button class="key" data-val="4">4</button>
+    <button class="key" data-val="5">5</button>
+    <button class="key" data-val="6">6</button>
+    <button class="key" data-val="7">7</button>
+    <button class="key" data-val="8">8</button>
+    <button class="key" data-val="9">9</button>
+    <button class="key action-btn" id="clear-btn">CLR</button>
+    <button class="key" data-val="0">0</button>
+    <button class="key action-btn" id="enter-btn">⏎</button>
+  </div>
+
+  <button id="undo-turn" style="margin-top: 15px;">Undo Last Turn</button>
+</div>
 
         <div id="turn-history"></div>
 
