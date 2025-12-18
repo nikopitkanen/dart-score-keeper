@@ -61,7 +61,8 @@ resetGameBtn.addEventListener("click", () => {
 	location.reload(); // simplest reset: reloads the page
 });
 
-// TODO: Remove new leg or refactor as in current state it is pointless.
-// FIXME: Winning game doesn't display anything, it just stops.
-// FIXME: Player name can be empty.This should not happen.
-// FIXME: 180 for round max score
+p1Input.addEventListener("input", (event) => {
+  if (p1Input.validity.valid) {
+    clea
+  }
+})

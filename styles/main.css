@@ -46,6 +46,33 @@ header h1 {
 	border-radius: 4px;
 }
 
+.radio {
+    display: inline-flex;
+    overflow: hidden;
+    border-radius: 16px;
+
+    .radio__input {
+        display: none;
+
+        &:checked + .radio__label {
+            background: #006B56;
+        }
+    }
+
+    .radio__label {
+        padding: 8px 16px;
+        font-size: 16px;
+        color: #ffffff;
+        background: #009578;
+        cursor:pointer;
+        transition: background 0.1s;
+
+        &:not(:last-of-type) {
+            border-right: 1px solid #006B56;
+        }
+    }
+}
+
 button {
 	background: #228b22;
 	color: white;
@@ -98,4 +125,3 @@ button:hover {
 	text-align: center;
 	font-size: 1.2rem;
 }
-

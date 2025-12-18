@@ -92,4 +92,3 @@ function saveState() {
     isGameOver: state.isGameOver
   })
 }
-}
