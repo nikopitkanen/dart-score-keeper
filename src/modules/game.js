@@ -7,19 +7,20 @@ export const state = {
   history: [],
 };
 
-export function newGame(p1, p2, gameType, legs) {
-  const gameSection = document.getElementById("game-section");
-  const setupSection = document.getElementById("setup-section");
-  gameSection.hidden = false;
-  setupSection.hidden = true;
+export function newGame(names, gameType, legs) {
+  //const gameSection = document.getElementById("game-section");
+  //const setupSection = document.getElementById("setup-section");
+  //gameSection.hidden = false;
+  //setupSection.hidden = true;
 
   state.gameType = parseInt(gameType, 10);
   state.legsToWin = parseInt(legs, 10);
   state.history = [];
-  state.players = [
-    { name: p1, score: state.gameType, legsWon: 0 },
-    { name: p2, score: state.gameType, legsWon: 0 },
-  ];
+  state.players = names.map((name) => ({
+    name: name,
+    score: state.gameType,
+    legsWon: 0
+  }))
 
   state.currentPlayerIndex = 0;
   state.isGameOver = false;

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darts Score Keeper</title>
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
     <script src="./src/main.js" type="module"></script>
   </head>
   <body>
@@ -15,12 +16,11 @@
     <main>
       <section id="setup-section">
         <h2>Game Setup</h2>
-        <form novalidate id="setup-form">
+        <form novalidate class="setup-form" id="setup-form">
           <label for="player-1">Player 1:</label>
             <input
-                id="player-1"
                 type="text"
-                name="player-1"
+                name="player"
                 required pattern="\w+"
                 minlength="3"
                 maxlength="20"
@@ -29,9 +29,8 @@
           <label>
             Player 2:
             <input
-                id="player-2"
                 type="text"
-                name="player-2"
+                name="player"
                 required pattern="\w+"
                 minlength="3"
                 maxlength="20"
@@ -68,9 +67,24 @@
           </label>
           <button class="normal" id="start-game" type="submit">Start Game</button>
         </form>
+
+        <button data-open-modal>open</button>
+        <dialog data-modal>
+            <h3>Modal</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi reprehen</p>
+            <div>
+                <button data-no-modal>no</button>
+                <button data-yes-modal>yes</button>
+            </div>
+        </dialog>
+        <script>
+
+
+
+        </script>
       </section>
 
-      <section id="game-section" hidden>
+      <section id="game-section" >
         <div id="scoreboard"></div>
 
         <div id="turn-input">
@@ -79,15 +93,20 @@
             Current Player:
             <span id="current-player-name"></span>
           </label>
-          <input id="turn-score" type="number" min="0" max="180">
-          <button id="submit-turn">Submit</button>
-          <button id="undo-turn">Undo</button>
+          <div>
+              <button id="undo-turn" title="Undo your turn" aria-label="Undo your turn"><i class="iconoir-undo" aria-hidden="true"></i></button>
+              <input id="turn-score" type="number" min="0" max="180">
+              <button id="submit-turn" title="Submit your turn" aria-label="Submit your turn"><i class="iconoir-plus-circle" aria-hidden="true"></i></button>
+          </div>
+
         </div>
 
         <div id="turn-history"></div>
+            <div>
+                <button id="new-leg">Start New Leg</button>
+                <button id="reset-game">Reset Game</button>
+            </div>
 
-        <button id="new-leg">Start New Leg</button>
-        <button id="reset-game">Reset Game</button>
       </section>
     </main>
   </body>

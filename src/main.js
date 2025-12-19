@@ -2,10 +2,6 @@ import * as game from "./modules/game.js";
 import * as ui from "./modules/ui.js";
 
 //setup form
-const p1Input = document.getElementById("player-1");
-const p2Input = document.getElementById("player-2");
-const gameTypeSelect = document.getElementById("game-type");
-const legsSelect = document.getElementById("set-size");
 const startGameBtn = document.getElementById("start-game");
 const submitTurnBtn = document.getElementById("submit-turn");
 const undoTurnBtn = document.getElementById("undo-turn");
@@ -13,16 +9,22 @@ const newLegBtn = document.getElementById("new-leg");
 const resetGameBtn = document.getElementById("reset-game")
 
 function handleNewGame() {
-  const gameType = gameTypeSelect.value;
-  const legs = legsSelect.value;
-  const p1 = p1Input.value;
-  const p2 = p2Input.value;
+  const formElement = document.getElementById("setup-form");
+  const data = new FormData(formElement);
+  const gameType = data.get("gameType");
+  const legs = data.get("legs");
 
-  game.newGame(p1, p2, gameType, legs);
+  const names = data.getAll("player")
+    .map(name => name.trim())
+
+  game.newGame(names, gameType, legs);
   ui.scoreBoard();
 }
 
-startGameBtn.addEventListener("click", handleNewGame);
+document.getElementById("setup-form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  handleNewGame();
+});
 submitTurnBtn.addEventListener("click", handleTurn);
 
 function handleTurn() {
@@ -60,9 +62,3 @@ newLegBtn.addEventListener("click", () => {
 resetGameBtn.addEventListener("click", () => {
 	location.reload(); // simplest reset: reloads the page
 });
-
-p1Input.addEventListener("input", (event) => {
-  if (p1Input.validity.valid) {
-    clea
-  }
-})
