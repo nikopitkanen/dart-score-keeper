@@ -16,45 +16,47 @@
     <main>
       <section id="setup-section">
         <h2>Game Setup</h2>
+
         <form novalidate class="setup-form" id="setup-form">
-          <label for="player-1">Player 1:</label>
-            <input
-                type="text"
-                name="player"
-                required pattern="\w+"
-                minlength="3"
-                maxlength="20"
-                title="Player name must have following">
-            <span class="error" aria-live="polite"></span>
-          <label>
-            Player 2:
-            <input
-                type="text"
-                name="player"
-                required pattern="\w+"
-                minlength="3"
-                maxlength="20"
-                title="Player name must have following ">
-          </label>
-          <label>
-            Game Type:
-            <select id="game-type">
-              <option value="301">301</option>
-              <option value="501">501</option>
-            </select>
-          </label>
-          <div class="radio">
-              <input class="radio__input" type="radio" name="gameType" id="gameType1" value="101">
-              <label class="radio__label" for="gameType1">101</label>
-              <input class="radio__input" type="radio" name="gameType" id="gameType2" value="301">
-              <label class="radio__label" for="gameType2">301</label>
-              <input class="radio__input" type="radio" name="gameType" id="gameType3" value="501" checked>
-              <label class="radio__label" for="gameType3">501</label>
-              <input class="radio__input" type="radio" name="gameType" id="gameType4" value="701">
-              <label class="radio__label" for="gameType4">701</label>
-              <input class="radio__input" type="radio" name="gameType" id="gameType5" value="1001">
-              <label class="radio__label" for="gameType5">1001</label>
-          </div>
+            <label>
+              Game Type:
+            </label>
+            <div class="radio" id="game-type">
+                <input class="radio__input" type="radio" name="gameType" id="gameType1" value="101">
+                <label class="radio__label" for="gameType1">101</label>
+                <input class="radio__input" type="radio" name="gameType" id="gameType2" value="301">
+                <label class="radio__label" for="gameType2">301</label>
+                <input class="radio__input" type="radio" name="gameType" id="gameType3" value="501" checked>
+                <label class="radio__label" for="gameType3">501</label>
+                <input class="radio__input" type="radio" name="gameType" id="gameType4" value="701">
+                <label class="radio__label" for="gameType4">701</label>
+                <input class="radio__input" type="radio" name="gameType" id="gameType5" value="1001">
+                <label class="radio__label" for="gameType5">1001</label>
+            </div>
+            <div id="player-wrapper">
+                <input
+                    type="text"
+                    name="player"
+                    required pattern="\w+"
+                    minlength="3"
+                    maxlength="20"
+                    title="Player name must have following"
+                    placeholder="player name">
+                <span class="error" aria-live="polite"></span>
+                <input
+                    type="text"
+                    name="player"
+                    required pattern="\w+"
+                    minlength="3"
+                    maxlength="20"
+                    title="Player name must have following "
+                    placeholder="player name">
+            </div>
+
+
+            <button id="add-player"><i class="iconoir-plus"></i></button>
+
+
           <label>
             Legs to Win:
             <input

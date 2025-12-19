@@ -62,3 +62,34 @@ newLegBtn.addEventListener("click", () => {
 resetGameBtn.addEventListener("click", () => {
 	location.reload(); // simplest reset: reloads the page
 });
+
+const playerWrapper = document.getElementById("player-wrapper")
+const addPlayerBtn = document.getElementById("add-player")
+
+addPlayerBtn.addEventListener("click", () => {
+  const div = document.createElement("div");
+  div.className = "player-input-group";
+
+  div.innerHTML = `
+    <input
+        type="text"
+        name="player"
+        required pattern="\w+"
+        minlength="3"
+        maxlength="20"
+        title="Player name must have following"
+        placeholder="player name">
+        <button class="del-player"><i class="iconoir-minus"></i></button>
+    `;
+
+  playerWrapper.appendChild(div);
+
+});
+
+playerWrapper.addEventListener("click", (e) => {
+  const delBtn = e.target.closest(".del-player");
+
+  if (delBtn) {
+    delBtn.parentElement.remove();
+  }
+})
