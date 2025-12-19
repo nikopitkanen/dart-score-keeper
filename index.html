@@ -14,7 +14,7 @@
     </header>
 
     <main>
-      <section id="setup-section">
+      <section id="setup-section" >
         <h2>Game Setup</h2>
 
         <form novalidate class="setup-form" id="setup-form">
@@ -33,28 +33,36 @@
                 <input class="radio__input" type="radio" name="gameType" id="gameType5" value="1001">
                 <label class="radio__label" for="gameType5">1001</label>
             </div>
-            <div id="player-wrapper">
-                <input
-                    type="text"
-                    name="player"
-                    required pattern="\w+"
-                    minlength="3"
-                    maxlength="20"
-                    title="Player name must have following"
-                    placeholder="player name">
-                <span class="error" aria-live="polite"></span>
-                <input
-                    type="text"
-                    name="player"
-                    required pattern="\w+"
-                    minlength="3"
-                    maxlength="20"
-                    title="Player name must have following "
-                    placeholder="player name">
+            <div class="player-wrapper" id="player-wrapper">
+                <div class="player-input-group">
+                    <input
+                        id="player-id-1"
+                        type="text"
+                        name="player"
+                        required pattern="\w+"
+                        minlength="3"
+                        maxlength="20"
+                        title="Player name must have following"
+                        placeholder="player 1 name">
+                        <span class="error" aria-live="polite"></span>
+                </div>
+                <div class="player-input-group">
+                    <input
+                        id="player-id-2"
+                        type="text"
+                        name="player"
+                        required pattern="\w+"
+                        minlength="3"
+                        maxlength="20"
+                        title="Player name must have following"
+                        placeholder="player 2 name">
+                        <span class="error" aria-live="polite"></span>
+                </div>
+
             </div>
 
 
-            <button id="add-player"><i class="iconoir-plus"></i></button>
+            <button id="add-player"><span class="iconoir-plus"></span></button>
 
 
           <label>
@@ -70,20 +78,6 @@
           <button class="normal" id="start-game" type="submit">Start Game</button>
         </form>
 
-        <button data-open-modal>open</button>
-        <dialog data-modal>
-            <h3>Modal</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi reprehen</p>
-            <div>
-                <button data-no-modal>no</button>
-                <button data-yes-modal>yes</button>
-            </div>
-        </dialog>
-        <script>
-
-
-
-        </script>
       </section>
 
       <section id="game-section" >

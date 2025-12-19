@@ -2,7 +2,6 @@ import * as game from "./modules/game.js";
 import * as ui from "./modules/ui.js";
 
 //setup form
-const startGameBtn = document.getElementById("start-game");
 const submitTurnBtn = document.getElementById("submit-turn");
 const undoTurnBtn = document.getElementById("undo-turn");
 const newLegBtn = document.getElementById("new-leg");
@@ -67,19 +66,25 @@ const playerWrapper = document.getElementById("player-wrapper")
 const addPlayerBtn = document.getElementById("add-player")
 
 addPlayerBtn.addEventListener("click", () => {
+  const counter = playerWrapper.querySelectorAll(".player-input-group").length;
+  const playerNumber = counter + 1;
+  const id = `player-id-${playerNumber}`
+
   const div = document.createElement("div");
   div.className = "player-input-group";
 
   div.innerHTML = `
+    <label for="${id}"></label>
     <input
+        id="${id}"
         type="text"
         name="player"
         required pattern="\w+"
         minlength="3"
         maxlength="20"
         title="Player name must have following"
-        placeholder="player name">
-        <button class="del-player"><i class="iconoir-minus"></i></button>
+        placeholder="player ${playerNumber} name">
+        <button class="del-player"><span class="iconoir-minus"></span> </button>
     `;
 
   playerWrapper.appendChild(div);
